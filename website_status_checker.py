@@ -22,10 +22,12 @@ statuses = {
     503: "Service Unavailable"
 }
 
+print("\nURLs\t\t\t\tMessage\t\t\t\tStatus Code")
+
 for url in website_url:
     try:
         web_response = requests.get(url)
-        print(url, statuses[web_response.status_code])
+        print(f"{url}\t\t{statuses[web_response.status_code]}\t\t{web_response.status_code}")
     
     except:
-        print(url, statuses[web_response.status_code])
+        print(f"{url}\t\t{statuses[web_response.status_code]}\t\t{web_response.status_code}")
