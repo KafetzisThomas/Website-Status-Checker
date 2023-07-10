@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 
-# Project Title: Website Status Checker (https://github.com/KafetzisThomas/Website-Status-Checker)
+# Project Title: Website-Status-Checker (https://github.com/KafetzisThomas/Website-Status-Checker)
 # Author / Project Owner: KafetzisThomas (https://github.com/KafetzisThomas)
 
 import requests
