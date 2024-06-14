@@ -6,7 +6,7 @@
 
 import sys
 import requests
-from requests.exceptions import RequestException
+from requests.exceptions import ConnectionError
 
 
 # Map HTTP status codes to their corresponding descriptions
@@ -31,8 +31,10 @@ def check_website_status(url):
         status_code = response.status_code
         message = statuses[response.status_code]
         print(f"\nUrl: {input_url}\nMessage: {message}\nStatus code: {status_code}")
-    except RequestException as err:
-        print(f"\nUrl: {url}\nError: {err}")
+    except ConnectionError:
+        print(
+            f"\nUrl: {url}\nError: Failed to establish a new connection. The server may not exist."
+        )
 
 
 if __name__ == "__main__":
