@@ -7,6 +7,7 @@
 import sys
 import requests
 
+
 # Map HTTP status codes to their corresponding descriptions
 statuses = {
     200: "Website Available",
@@ -18,10 +19,13 @@ statuses = {
 }
 
 
-url = sys.argv[1]
+def check_website_status(url):
+    response = requests.get(url)
+    status_code = response.status_code
+    message = statuses[response.status_code]
+    print(f"\nUrl: {url}\nMessage: {message}\nStatus code: {status_code}")
 
-web_response = requests.get(f"http://www.{url}")
 
-print(
-    f"\nUrl: {url}\nMessage: {statuses[web_response.status_code]}\nStatus code: {web_response.status_code}"
-)
+if __name__ == "__main__":
+    input_url = sys.argv[1]
+    check_website_status(input_url)
