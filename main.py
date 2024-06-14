@@ -30,17 +30,22 @@ def check_website_status(url):
         response = requests.get(url)
         status_code = response.status_code
         message = statuses[response.status_code]
-        print(f"\nUrl: {input_url}\nMessage: {message}\nStatus code: {status_code}")
+        print(
+            f"[*] Url: {input_url}\n[*] Message: {message}\n[*] Status code: {status_code}"
+        )
     except ConnectionError:
         print(
-            f"\nUrl: {url}\nError: Failed to establish a new connection. The server may not exist."
+            f"[*] Url: {url}\n[!] Error: Failed to establish a new connection. The server may not exist."
         )
 
 
 if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("[!] Usage: python3 main.py <URL>")
+        sys.exit()
+
     input_url = sys.argv[1]
     if "http://www." not in input_url:
         input_url = f"http://www.{input_url}"
-        check_website_status(input_url)
-    else:
-        check_website_status(input_url)
+
+    check_website_status(input_url)
