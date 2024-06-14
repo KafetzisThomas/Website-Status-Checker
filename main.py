@@ -6,6 +6,7 @@
 
 import sys
 import requests
+from requests.exceptions import RequestException
 
 
 # Map HTTP status codes to their corresponding descriptions
@@ -20,12 +21,19 @@ statuses = {
 
 
 def check_website_status(url):
-    response = requests.get(url)
-    status_code = response.status_code
-    message = statuses[response.status_code]
-    print(f"\nUrl: {url}\nMessage: {message}\nStatus code: {status_code}")
+    try:
+        response = requests.get(url)
+        status_code = response.status_code
+        message = statuses[response.status_code]
+        print(f"\nUrl: {input_url}\nMessage: {message}\nStatus code: {status_code}")
+    except RequestException as err:
+        print(f"\nUrl: {url}\nError: {err}")
 
 
 if __name__ == "__main__":
     input_url = sys.argv[1]
-    check_website_status(input_url)
+    if "http://www." not in input_url:
+        input_url = f"http://www.{input_url}"
+        check_website_status(input_url)
+    else:
+        check_website_status(input_url)
