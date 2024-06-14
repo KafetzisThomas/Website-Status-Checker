@@ -14,11 +14,10 @@ git clone https://github.com/KafetzisThomas/Website-Status-Checker.git
 # Correct way
 $ python3 main.py <URL>
 
-# Incorrect Way
-
+# Incorrect ways
 $ python3 main.py <URL> <URL> ...
 $ python3 main.py
 
 # Example
-$ python3 main.py github.com  # or http://github.com
+$ python3 main.py github.com  # or http://www.github.com
 ```
